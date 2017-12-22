@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Buttons</string>
+    <string name="switch_compat">switch</string>
+    <string name="checkbox">checkbox</string>
+    <string name="circular_bar">Circular Bar</string>
+    <string name="horizontal_bar">Horizontal Bar</string>
+    <string name="radio_1">radio 1</string>
+    <string name="radio_2">radio 2</string>
+    <string name="show_alert">Show Alert</string>
+    <string name="show_confirmation">Show Confirmation</string>
+    <string name="show_progress_dialog">Show Progress Dialog</string>
+    <string name="show_snackbar">Show Snackbar</string>
+    <string name="near_by">Near By</string>
+    <string name="favorites">Favorites</string>
+    <string name="recent">Recent</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="images">Images</string>
+    <string name="roronova_zoro_wallpaper_hd">RoroNova zoro wallpaper HD</string>
+</resources>
