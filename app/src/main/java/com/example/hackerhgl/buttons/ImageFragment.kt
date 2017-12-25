@@ -33,17 +33,17 @@ class ImageFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
-            mParam1 = arguments.getString(ARG_PARAM1)
-            mParam2 = arguments.getString(ARG_PARAM2)
+            mParam1 = arguments?.getString(ARG_PARAM1)
+            mParam2 = arguments?.getString(ARG_PARAM2)
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         mView =  inflater!!.inflate(R.layout.fragment_image, container, false)
 
         viewPager = mView.findViewById(R.id.viewpager)
-        adapter = SlideShowAdapter(context)
+        adapter = SlideShowAdapter(context!!)
         viewPager.adapter = adapter
         return  mView
     }

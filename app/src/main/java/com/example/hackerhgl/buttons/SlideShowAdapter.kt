@@ -11,9 +11,7 @@ import android.widget.LinearLayout
 import com.example.hackerhgl.buttons.R.string.images
 import android.graphics.BitmapFactory
 import android.graphics.Bitmap
-
-
-
+import com.bumptech.glide.Glide
 
 
 /**
@@ -49,7 +47,8 @@ class SlideShowAdapter (context: Context) : PagerAdapter() {
         inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view = inflater.inflate(R.layout.slideshow, container, false)
         val img = view.findViewById<ImageView>(R.id.imageView_id)
-        img.setImageResource(images[position])
+//        img.setImageResource(images[position])
+        Glide.with(context).load(images[position]).into(img)
 //        val image: Bitmap = getCacheImage(position)
 //        img.setImageBitmap(image)
         container.addView(view)

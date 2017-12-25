@@ -50,12 +50,12 @@ class HomeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
-            mParam1 = arguments.getString(ARG_PARAM1)
-            mParam2 = arguments.getString(ARG_PARAM2)
+            mParam1 = arguments!!.getString(ARG_PARAM1)
+            mParam2 = arguments!!.getString(ARG_PARAM2)
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         mView = inflater!!.inflate(R.layout.fragment_home, container, false)
@@ -177,13 +177,13 @@ class HomeFragment : Fragment() {
                 mConfirmationDialog.show()
             }
         }
-        mConfirmationBuilder = AlertDialog.Builder(activity)
+        mConfirmationBuilder = AlertDialog.Builder(context!!)
         mConfirmationBuilder.setTitle("May i Confirm  ?")
         mConfirmationBuilder.setSingleChoiceItems(items, 0, { _, i ->
             result = items[i]
         })
         mConfirmationBuilder.setPositiveButton("Ok", {_, _ ->
-            Toast.makeText(activity.applicationContext, "Selected : "+ result, Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity?.applicationContext, "Selected : "+ result, Toast.LENGTH_SHORT).show()
         })
         mConfirmationBuilder.setNegativeButton("Cancel", {_, _ -> {}})
 
@@ -197,18 +197,19 @@ class HomeFragment : Fragment() {
         alertButton.setOnClickListener { _ ->
             run { mAlertDialog.show() }
         }
-        mAlertBuilder = AlertDialog.Builder(activity, R.style.AlertDialogTheme)
+//        var cont = activity?.applicationContext
+        mAlertBuilder = AlertDialog.Builder(activity!!.applicationContext, R.style.AlertDialogTheme)
         mAlertBuilder.setMessage("May i Discard  ?")
         mAlertBuilder.setPositiveButton("Discard", { _, _ ->
-            Toast.makeText(activity.applicationContext, "Discard Button", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity?.applicationContext, "Discard Button", Toast.LENGTH_SHORT).show()
         })
 
         mAlertBuilder.setPositiveButton("Discard 2", { _, _ ->
-            Toast.makeText(activity.applicationContext, "Discard 2 Button", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity?.applicationContext, "Discard 2 Button", Toast.LENGTH_SHORT).show()
         })
 
         mAlertBuilder.setNegativeButton("Cancel", { _, _ ->
-            Toast.makeText(activity.applicationContext, "CancelButton", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity?.applicationContext, "CancelButton", Toast.LENGTH_SHORT).show()
         })
 
         mAlertDialog = mAlertBuilder.create()
@@ -223,7 +224,7 @@ class HomeFragment : Fragment() {
                 val id = mView.findViewById<AppCompatRadioButton>(id)
                 val text = id.text
                 val status  = id.isChecked
-                Toast.makeText(activity.applicationContext,  "" + text + " : " + status, Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity?.applicationContext,  "" + text + " : " + status, Toast.LENGTH_SHORT).show()
 
             }
         }
@@ -233,7 +234,7 @@ class HomeFragment : Fragment() {
         mCheckbox = mView.findViewById(R.id.checkbox)
 
         mCheckbox.setOnCheckedChangeListener { _, checked ->
-            Toast.makeText(activity.applicationContext, "Checkbox status : " + checked.toString(), Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity?.applicationContext, "Checkbox status : " + checked.toString(), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -254,7 +255,7 @@ class HomeFragment : Fragment() {
                 mHorizontalBar.visibility = View.VISIBLE
         }
         fabButton.setOnClickListener {
-            Toast.makeText(activity.applicationContext, "Fab Button", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity?.applicationContext, "Fab Button", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -270,7 +271,7 @@ class HomeFragment : Fragment() {
         mSwitch = mView.findViewById(R.id.switch_compat)
 
         mSwitch.setOnCheckedChangeListener { _, status ->
-            Toast.makeText(activity.applicationContext,"Status : " + status.toString(), Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity?.applicationContext,"Status : " + status.toString(), Toast.LENGTH_SHORT).show()
         }
     }
 }// Required empty public constructor
