@@ -41,6 +41,12 @@ class MainActivity : AppCompatActivity() {
                     transaction.replace(R.id.fragment_content, ImageFragment()).commit()
                     return@setOnNavigationItemSelectedListener true
                 }
+                id == R.id.item_tab && check -> {
+                    mCurrentFragment = R.id.item_tab
+                    transaction.replace(R.id.fragment_content, TabFragment()).commit()
+                    return@setOnNavigationItemSelectedListener true
+
+                }
                 else -> false
             }
             true

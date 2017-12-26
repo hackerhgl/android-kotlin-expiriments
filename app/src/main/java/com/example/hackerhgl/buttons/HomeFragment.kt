@@ -198,7 +198,7 @@ class HomeFragment : Fragment() {
             run { mAlertDialog.show() }
         }
 //        var cont = activity?.applicationContext
-        mAlertBuilder = AlertDialog.Builder(activity!!.applicationContext, R.style.AlertDialogTheme)
+        mAlertBuilder = AlertDialog.Builder(context!!, R.style.AlertDialogTheme)
         mAlertBuilder.setMessage("May i Discard  ?")
         mAlertBuilder.setPositiveButton("Discard", { _, _ ->
             Toast.makeText(activity?.applicationContext, "Discard Button", Toast.LENGTH_SHORT).show()

@@ -11,7 +11,7 @@
         android:title="@string/images"
         android:icon="@drawable/ic_image" />
     <item
-        android:id="@+id/item_recent"
-        android:title="@string/recent"
+        android:id="@+id/item_tab"
+        android:title="@string/tabs"
         android:icon="@drawable/ic_history" />
 </menu>
