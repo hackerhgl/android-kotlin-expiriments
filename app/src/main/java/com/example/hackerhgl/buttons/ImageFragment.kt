@@ -3,11 +3,17 @@ package com.example.hackerhgl.buttons
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import me.relex.circleindicator.CircleIndicator
+import java.util.*
+import com.example.hackerhgl.buttons.R.string.images
+
+
 
 
 /**
@@ -23,6 +29,10 @@ class ImageFragment : Fragment() {
     private lateinit var viewPager: ViewPager
     private lateinit var adapter: SlideShowAdapter
     private lateinit var mView: View
+    private lateinit var indicator: CircleIndicator
+    private lateinit var runnable: Runnable
+    private var timer: Timer = Timer()
+    private var handler: Handler = Handler()
 
     // TODO: Rename and change types of parameters
     private var mParam1: String? = null
@@ -41,10 +51,31 @@ class ImageFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         mView =  inflater!!.inflate(R.layout.fragment_image, container, false)
-
         viewPager = mView.findViewById(R.id.viewpager)
+        indicator = mView.findViewById(R.id.circle_indicator)
         adapter = SlideShowAdapter(context!!)
         viewPager.adapter = adapter
+        indicator.setViewPager(viewPager)
+
+
+        runnable = Runnable {
+            var i = viewPager.currentItem
+            if (i == adapter.images.size - 1) {
+                i = 0
+                viewPager.setCurrentItem(i, true)
+            } else {
+                i++
+                viewPager.setCurrentItem(i, true)
+            }
+        }
+
+        timer.schedule(object : TimerTask() {
+            override fun run() {
+                handler.post(runnable)
+            }
+        }, 4000, 4000)
+
+
         return  mView
     }
 

@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import com.example.hackerhgl.buttons.R.string.images
 import android.graphics.BitmapFactory
 import android.graphics.Bitmap
+import android.widget.Toast
 import com.bumptech.glide.Glide
 
 
@@ -22,7 +23,7 @@ class SlideShowAdapter (context: Context) : PagerAdapter() {
     private val context = context
     private lateinit var inflater: LayoutInflater
 
-    private var images= intArrayOf(
+    public var images= intArrayOf(
             R.drawable.itachi,
             R.drawable.deadpool,
             R.drawable.madara,
@@ -51,6 +52,9 @@ class SlideShowAdapter (context: Context) : PagerAdapter() {
         Glide.with(context).load(images[position]).into(img)
 //        val image: Bitmap = getCacheImage(position)
 //        img.setImageBitmap(image)
+        img.setOnClickListener { _ ->
+            Toast.makeText(context!!, "position"+position.toString(), Toast.LENGTH_SHORT).show()
+        }
         container.addView(view)
         return view
     }
